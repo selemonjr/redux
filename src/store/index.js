@@ -5,6 +5,8 @@ const reducerFunction = (state = {counter: 10}, action) => {
             return {counter: state.counter += 1};
         case "decrement":
             return {counter: state.counter -= 1};
+            case "incrementBy":
+                return {counter: state.counter += action.payload};
         default:
             return state
     }
