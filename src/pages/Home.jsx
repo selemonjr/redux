@@ -1,11 +1,11 @@
 import {useDispatch} from "react-redux";
 import {useGetAllProductsQuery} from "../features/productsApi";
+import {addToCart} from "../features/cartSlice";
 const Home = () => {
-    const dispatch = useDispatch();
     const {data,error,isLoading} = useGetAllProductsQuery();
-    console.log(data,error,isLoading)
-    const handleAddToCart = () => {
-        dispatch()
+    const dispatch = useDispatch();
+    const handleAddToCart = (product) => {
+        dispatch(addToCart(product))
     };
     if(isLoading) {
         return (
