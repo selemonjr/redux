@@ -1,24 +1,16 @@
-import { useSelector,useDispatch } from "react-redux";
+import Home from "./pages/Home";
+import Navigation from "./components/Navigation";
+import Cart from "./pages/Cart";
+import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
 const App = () => {
-  const counter = useSelector((state) => state.counter);
-  const dispatch = useDispatch();
-  const increment = () => {
-    dispatch({type:"increment"})
-  };
-  const decrement = () => {
-    dispatch({type:"decrement"})
-  }
-  const incrementBy = () => {
-    dispatch({type:"incrementBy", payload: 10})
-  }
   return (
-    <>
-    <h1>Hello React + Redux</h1>
-    <p>{counter}</p>
-    <button onClick={increment}>Increment</button>
-    <button onClick={decrement}>Decrement</button>
-    <button onClick={incrementBy}>Increment By 10</button>
-    </>
+    <Router>
+      <Navigation/>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/cart" element={<Cart/>}/>
+      </Routes>
+    </Router>
   )
-};
+}
 export default App;
